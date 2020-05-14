@@ -1,0 +1,13 @@
+<div class="input-field">
+  <input type="text"
+ [ngModel]="todosQuery.textFilter$ | async"
+  class="form-control"
+  placeholder="Filter todos"
+  (ngModelChange)="updateTextFilter($event)"
+  #input>
+</div>
+<div *ngFor="let todo of todos$ | async">
+  <span>{{todo.title}}</span>
+  <span style="font-size: 12px; color: grey;"> {{todo.id}}</span>
+  <span *ngIf="todo.id === (todosQuery.selectedTodoId$ | async)">✅</span>
+  </div>
